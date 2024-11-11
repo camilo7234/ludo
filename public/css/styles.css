@@ -1,3 +1,6 @@
+/* Importar la fuente */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap');
+
 /* Estilos generales */
 body {
     font-family: 'Poppins', sans-serif;
@@ -5,6 +8,18 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.background-video {
+    position: fixed; /* Cambiado a fixed para que se mantenga en su lugar */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
 
 /* Encabezado */
@@ -40,6 +55,9 @@ input, textarea {
     padding: 0.5rem;
     width: 100%;
     max-width: 300px;
+    border: 2px solid #87ceeb; /* Borde azul */
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
 }
 
 /* Formularios */
@@ -50,8 +68,8 @@ form {
 
 /* Estilos específicos del dashboard */
 body.dashboard {
-    font-family: Arial, sans-serif;
-    background-color: #f4f6f9;
+    font-family: 'Quicksand', sans-serif; /* Nueva fuente */
+    background-color: transparent; /* Fondo transparente para ver el video */
     color: #333;
     display: flex;
     flex-direction: column;
@@ -85,8 +103,8 @@ section.dashboard {
 
 /* Estilos específicos para la vista del profesional */
 body.professional {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f0f8ff; /* Azul claro */
+    font-family: 'Quicksand', sans-serif; /* Nueva fuente */
+    background-color: transparent; /* Fondo transparente para ver el video */
     color: #333;
     margin: 0;
     padding: 0;
@@ -136,10 +154,11 @@ a.professional:hover, button.professional:hover {
     background-color: #5f9ea0;
 }
 
+
 /* Estilos específicos para la vista del paciente */
 body.patient {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f0f8ff; /* Azul claro */
+    font-family: 'Quicksand', sans-serif; /* Nueva fuente */
+    background-color: transparent; /* Fondo transparente para ver el video */
     color: #333;
     margin: 0;
     padding: 0;
@@ -160,6 +179,82 @@ h1.patient {
 }
 
 main.patient {
+    max-width: 800px;
+    margin: 2em auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente */
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    overflow-y: auto; /* Permitir desplazamiento vertical */
+    max-height: 80vh; /* Limitar la altura máxima */
+    -webkit-overflow-scrolling: touch; /* Desplazamiento suave en dispositivos táctiles */
+}
+
+section.patient {
+    background-color: #ffffff;
+    padding: 1em;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+section.patient h3 {
+    color: #004080;
+    margin-bottom: 0.5rem;
+}
+
+section.patient a {
+    display: inline-block;
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+    background-color: #4682b4;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+section.patient a:hover {
+    background-color: #5f9ea0;
+}
+
+/* Ocultar barra de desplazamiento */
+main.patient::-webkit-scrollbar {
+    display: none;
+}
+
+main.patient {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Estilos específicos para la autoevaluación */
+body.autoevaluacion {
+    font-family: 'Quicksand', sans-serif; /* Nueva fuente */
+    background-color: transparent; /* Fondo transparente para ver el video */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header.autoevaluacion {
+    background-color: #87ceeb;
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+}
+
+h1.autoevaluacion {
+    color: #004080;
+}
+
+main.autoevaluacion {
     max-width: 600px;
     margin: 2em auto;
     display: flex;
@@ -167,7 +262,7 @@ main.patient {
     gap: 2em;
 }
 
-section.patient {
+section.autoevaluacion {
     background-color: #ffffff;
     padding: 1.5em;
     border-radius: 8px;
@@ -175,52 +270,56 @@ section.patient {
     text-align: center;
 }
 
-a.patient, button.patient {
-    display: inline-block;
-    margin: 1rem;
-    padding: 1rem 2rem;
-    background-color: #4682b4;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 8px;
-}
-
-a.patient:hover, button.patient:hover {
-    background-color: #5f9ea0;
-}
-
-/* Estilos específicos para la vista de inicio de sesión */
-body.login {
+form.autoevaluacion {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f8ff;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-form.login {
-    background-color: #ffffff;
-    padding: 2rem;
+.autoevaluacion .question {
+    background-color: #f0f8ff;
+    padding: 1rem;
     border-radius: 8px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    margin-bottom: 1rem;
 }
 
-input.login, button.login {
-    margin: 1rem 0;
-    padding: 0.5rem;
-    width: 100%;
-    max-width: 300px;
+.autoevaluacion .question label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
 }
 
-button.login {
+.autoevaluacion .question input[type="radio"] {
+    margin-right: 0.5rem;
+}
+
+.autoevaluacion .question .options {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+button.autoevaluacion {
     background-color: #4682b4;
     color: #fff;
     border: none;
     border-radius: 8px;
+    padding: 0.75rem 1.5rem;
     cursor: pointer;
+    font-size: 1rem;
 }
 
-button.login:hover {
+button.autoevaluacion:hover {
     background-color: #5f9ea0;
+}
+
+/* Estilos adicionales para el fondo de video */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

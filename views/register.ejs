@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="/css/styles.css"> <!-- Incluyendo el archivo de estilos -->
 </head>
 <body>
+    <video class="background-video" autoplay loop muted>
+        <source src="/images/clouds.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de videos.
+    </video>
+
     <% if (typeof success !== 'undefined') { %>
         <p style="color: green;"><%= success %></p>
     <% } %>
@@ -30,15 +35,15 @@
             <input type="text" name="telefono" placeholder="Teléfono">
             <input type="text" name="direccion" placeholder="Dirección">
             <input type="text" name="ciudad" placeholder="Ciudad">
-            <input type="text" name="nombre_familiar" placeholder="Nombre del Familiar" required>
+            <input type="text" name="nombre_familiar" placeholder="Nombre del Familiar">
             <input type="text" name="relacion_familiar" placeholder="Relación con el Familiar" id="relacion_familiar">
             <input type="text" name="telefono_familiar" placeholder="Teléfono del Familiar" id="telefono_familiar">
         </div>
         
         <!-- Campos específicos para Profesional -->
         <div id="profesionalFields" style="display: none;">
-            <input type="text" name="numero_tarjeta_profesional" placeholder="Número de Tarjeta Profesional" required>
-            <input type="text" name="especialidad" placeholder="Especialidad" required>
+            <input type="text" name="numero_tarjeta_profesional" placeholder="Número de Tarjeta Profesional">
+            <input type="text" name="especialidad" placeholder="Especialidad">
         </div>
         
         <button type="submit">Registrar</button>
@@ -58,17 +63,30 @@
             const nombreFamiliar = document.querySelector('input[name="nombre_familiar"]');
             const relacionFamiliar = document.getElementById('relacion_familiar');
             const telefonoFamiliar = document.getElementById('telefono_familiar');
+            const numeroTarjeta = document.querySelector('input[name="numero_tarjeta_profesional"]');
+            const especialidad = document.querySelector('input[name="especialidad"]');
 
             if (rolId === '1') {
-                // Solo hacer requeridos los campos visibles
+                // Solo hacer requeridos los campos visibles para Paciente
                 nombreFamiliar.setAttribute('required', 'required');
                 relacionFamiliar.setAttribute('required', 'required');
                 telefonoFamiliar.setAttribute('required', 'required');
-            } else {
-                // Quitar requerimiento de campos no visibles
+                numeroTarjeta.removeAttribute('required');
+                especialidad.removeAttribute('required');
+            } else if (rolId === '2') {
+                // Solo hacer requeridos los campos visibles para Profesional
+                numeroTarjeta.setAttribute('required', 'required');
+                especialidad.setAttribute('required', 'required');
                 nombreFamiliar.removeAttribute('required');
                 relacionFamiliar.removeAttribute('required');
                 telefonoFamiliar.removeAttribute('required');
+            } else {
+                // Quitar requerimiento de todos los campos no visibles
+                nombreFamiliar.removeAttribute('required');
+                relacionFamiliar.removeAttribute('required');
+                telefonoFamiliar.removeAttribute('required');
+                numeroTarjeta.removeAttribute('required');
+                especialidad.removeAttribute('required');
             }
         }
 
