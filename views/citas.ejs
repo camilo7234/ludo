@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Citas</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Gestión de Citas</h1>
+    
+    <!-- Formulario para crear una nueva cita -->
+    <form action="/citas" method="POST">
+        <label for="paciente_id">Paciente:</label>
+        <input type="number" name="paciente_id" required>
+        
+        <label for="profesional_id">Profesional:</label>
+        <input type="number" name="profesional_id" required>
+        
+        <label for="fecha">Fecha:</label>
+        <input type="date" name="fecha" required>
+        
+        <label for="hora">Hora:</label>
+        <input type="time" name="hora" required>
+        
+        <label for="motivo">Motivo:</label>
+        <textarea name="motivo" required></textarea>
+        
+        <button type="submit">Agregar Cita</button>
+    </form>
+
+    <!-- Listado de citas -->
+    <h2>Lista de Citas</h2>
+    <ul>
+        <% citas.forEach(cita => { %>
+            <li>
+                Paciente ID: <%= cita.paciente_id %>, Profesional ID: <%= cita.profesional_id %>, 
+                Fecha: <%= cita.fecha %>, Hora: <%= cita.hora %>, Motivo: <%= cita.motivo %>
+                <form action="/citas/<%= cita.id %>/delete" method="POST" style="display:inline;">
+                    <button type="submit">Eliminar</button>
+                </form>
+                <form action="/citas/<%= cita.id %>/edit" method="POST" style="display:inline;">
+                    <button type="submit">Editar</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>

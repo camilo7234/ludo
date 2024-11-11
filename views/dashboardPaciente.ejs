@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel del Paciente</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Asegúrate de que la ruta sea correcta -->
+</head>
+<body class="patient">
+    <header class="patient">
+        <h1 class="patient">Bienvenido, <%= pacienteNombre %></h1>
+        <h2 class="patient">Panel del Paciente</h2>
+    </header>
+
+    <!-- Sección de Opciones -->
+    <main class="patient">
+        <section class="patient">
+            <h3>Autoevaluación</h3>
+            <a href="/autoevaluacion" class="patient">Realizar test de autoevaluación</a> <!-- Ruta corregida -->
+        </section>
+
+        <section class="patient">
+            <h3>Diario Personal</h3>
+            <a href="/paciente/diario" class="patient">Acceder al diario</a>
+        </section>
+
+        <section class="patient">
+            <h3>Gestión de Citas</h3>
+            <a href="/paciente/citas" class="patient">Agendar o ver citas</a>
+        </section>
+    </main>
+
+    <!-- Cerrar Sesión -->
+    <footer class="patient">
+        <form action="/cerrarSesion" method="POST">
+            <button type="submit" class="patient">Cerrar sesión</button>
+        </form>
+    </footer>
+</body>
+</html>

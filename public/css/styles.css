@@ -1,0 +1,226 @@
+/* Estilos generales */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f8ff; /* Azul claro */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Encabezado */
+header {
+    background-color: #87ceeb;
+    text-align: center;
+    padding: 2rem;
+}
+
+h1 {
+    color: #004080;
+}
+
+/* Enlaces y botones */
+a, button {
+    display: inline-block;
+    margin: 1rem;
+    padding: 1rem 2rem;
+    background-color: #4682b4;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+a:hover, button:hover {
+    background-color: #5f9ea0;
+}
+
+/* Entradas y áreas de texto */
+input, textarea {
+    display: block;
+    margin: 1rem auto;
+    padding: 0.5rem;
+    width: 100%;
+    max-width: 300px;
+}
+
+/* Formularios */
+form {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+/* Estilos específicos del dashboard */
+body.dashboard {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+header.dashboard, footer.dashboard {
+    background-color: #1e88e5;
+    color: white;
+    padding: 1em;
+    width: 100%;
+    text-align: center;
+}
+
+main.dashboard {
+    max-width: 600px;
+    margin: 2em auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+section.dashboard {
+    background-color: #ffffff;
+    padding: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Estilos específicos para la vista del profesional */
+body.professional {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f8ff; /* Azul claro */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header.professional {
+    background-color: #87ceeb;
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+}
+
+h1.professional {
+    color: #004080;
+}
+
+main.professional {
+    max-width: 600px;
+    margin: 2em auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+section.professional {
+    background-color: #ffffff;
+    padding: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+a.professional, button.professional {
+    display: inline-block;
+    margin: 1rem;
+    padding: 1rem 2rem;
+    background-color: #4682b4;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+a.professional:hover, button.professional:hover {
+    background-color: #5f9ea0;
+}
+
+/* Estilos específicos para la vista del paciente */
+body.patient {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f8ff; /* Azul claro */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header.patient {
+    background-color: #87ceeb;
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+}
+
+h1.patient {
+    color: #004080;
+}
+
+main.patient {
+    max-width: 600px;
+    margin: 2em auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+section.patient {
+    background-color: #ffffff;
+    padding: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+a.patient, button.patient {
+    display: inline-block;
+    margin: 1rem;
+    padding: 1rem 2rem;
+    background-color: #4682b4;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+a.patient:hover, button.patient:hover {
+    background-color: #5f9ea0;
+}
+
+/* Estilos específicos para la vista de inicio de sesión */
+body.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f8ff;
+}
+
+form.login {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+input.login, button.login {
+    margin: 1rem 0;
+    padding: 0.5rem;
+    width: 100%;
+    max-width: 300px;
+}
+
+button.login {
+    background-color: #4682b4;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button.login:hover {
+    background-color: #5f9ea0;
+}

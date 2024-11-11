@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autoevaluación de Ludopatía</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Autoevaluación de Ludopatía</h1>
+    </header>
+    <main>
+        <form action="/autoevaluacion" method="POST">
+            <% preguntas.forEach((pregunta, index) => { %>
+                <div>
+                    <label><%= pregunta %></label>
+                    <input type="radio" name="respuestas[<%= index %>]" value="1" required> Sí
+                    <input type="radio" name="respuestas[<%= index %>]" value="0" required> No
+                </div>
+            <% }) %>
+            <button type="submit">Enviar</button>
+        </form>
+    </main>
+</body>
+</html>

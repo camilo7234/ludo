@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Incluyendo el archivo de estilos -->
+</head>
+<body>
+    <% if (typeof success !== 'undefined') { %>
+        <p style="color: green;"><%= success %></p>
+    <% } %>
+    <% if (typeof error !== 'undefined') { %>
+        <p style="color: red;"><%= error %></p>
+    <% } %>
+    <form id="registrationForm" action="/register" method="POST">
+        <input type="text" name="nombre_completo" placeholder="Nombre Completo" required>
+        <input type="email" name="email" placeholder="Correo Electrónico" required>
+        <input type="password" name="contraseña" placeholder="Contraseña" required>
+        <select name="rol_id" id="rol_id" required onchange="showRoleSpecificFields()">
+            <option value="">Seleccione un rol</option>
+            <option value="1">Paciente</option>
+            <option value="2">Profesional</option>
+            <option value="3">Administrador</option>
+        </select>
+        
+        <!-- Campos específicos para Paciente -->
+        <div id="pacienteFields" style="display: none;">
+            <input type="text" name="cedula" placeholder="Cédula">
+            <input type="text" name="telefono" placeholder="Teléfono">
+            <input type="text" name="direccion" placeholder="Dirección">
+            <input type="text" name="ciudad" placeholder="Ciudad">
+            <input type="text" name="nombre_familiar" placeholder="Nombre del Familiar" required>
+            <input type="text" name="relacion_familiar" placeholder="Relación con el Familiar" id="relacion_familiar">
+            <input type="text" name="telefono_familiar" placeholder="Teléfono del Familiar" id="telefono_familiar">
+        </div>
+        
+        <!-- Campos específicos para Profesional -->
+        <div id="profesionalFields" style="display: none;">
+            <input type="text" name="numero_tarjeta_profesional" placeholder="Número de Tarjeta Profesional" required>
+            <input type="text" name="especialidad" placeholder="Especialidad" required>
+        </div>
+        
+        <button type="submit">Registrar</button>
+    </form>
+
+    <script>
+        function showRoleSpecificFields() {
+            const rolId = document.getElementById('rol_id').value;
+            const pacienteFields = document.getElementById('pacienteFields');
+            const profesionalFields = document.getElementById('profesionalFields');
+
+            // Mostrar campos según el rol seleccionado
+            pacienteFields.style.display = rolId === '1' ? 'block' : 'none';
+            profesionalFields.style.display = rolId === '2' ? 'block' : 'none';
+
+            // Validar si los campos deben ser requeridos
+            const nombreFamiliar = document.querySelector('input[name="nombre_familiar"]');
+            const relacionFamiliar = document.getElementById('relacion_familiar');
+            const telefonoFamiliar = document.getElementById('telefono_familiar');
+
+            if (rolId === '1') {
+                // Solo hacer requeridos los campos visibles
+                nombreFamiliar.setAttribute('required', 'required');
+                relacionFamiliar.setAttribute('required', 'required');
+                telefonoFamiliar.setAttribute('required', 'required');
+            } else {
+                // Quitar requerimiento de campos no visibles
+                nombreFamiliar.removeAttribute('required');
+                relacionFamiliar.removeAttribute('required');
+                telefonoFamiliar.removeAttribute('required');
+            }
+        }
+
+        // Validación de campos antes de enviar el formulario
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            const rolId = document.getElementById('rol_id').value;
+            const pacienteFieldsVisible = rolId === '1';
+            const profesionalFieldsVisible = rolId === '2';
+
+            // Si es Paciente, verificar campos de paciente
+            if (pacienteFieldsVisible) {
+                const nombreFamiliar = document.querySelector('input[name="nombre_familiar"]').value;
+                const relacionFamiliar = document.querySelector('input[name="relacion_familiar"]').value;
+                const telefonoFamiliar = document.querySelector('input[name="telefono_familiar"]').value;
+
+                if (!nombreFamiliar || !relacionFamiliar || !telefonoFamiliar) {
+                    event.preventDefault(); // Evitar el envío del formulario
+                    alert("Por favor completa todos los campos del familiar.");
+                }
+            } else if (profesionalFieldsVisible) {
+                // Si es Profesional, agregar validaciones específicas aquí si es necesario
+                const numeroTarjeta = document.querySelector('input[name="numero_tarjeta_profesional"]').value;
+                const especialidad = document.querySelector('input[name="especialidad"]').value;
+
+                if (!numeroTarjeta || !especialidad) {
+                    event.preventDefault();
+                    alert("Por favor completa todos los campos del profesional.");
+                }
+            }
+        });
+    </script>
+</body>
+</html>

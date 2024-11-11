@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profesionales</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Gestión de Profesionales</h1>
+    
+    <!-- Formulario para añadir un nuevo profesional -->
+    <form action="/profesional" method="POST">
+        <label for="nombre_completo">Nombre Completo:</label>
+        <input type="text" name="nombre_completo" required>
+        
+        <label for="numero_tarjeta_profesional">Número de Tarjeta Profesional:</label>
+        <input type="number" name="numero_tarjeta_profesional" required>
+        
+        <label for="especialidad">Especialidad:</label>
+        <input type="text" name="especialidad">
+        
+        <button type="submit">Agregar Profesional</button>
+    </form>
+
+    <!-- Listado de profesionales -->
+    <h2>Lista de Profesionales</h2>
+    <ul>
+        <% profesionales.forEach(profesional => { %>
+            <li>
+                <strong><%= profesional.nombre_completo %></strong> - <%= profesional.numero_tarjeta_profesional %>
+                <form action="/profesional/<%= profesional.id %>/delete" method="POST" style="display:inline;">
+                    <button type="submit">Eliminar</button>
+                </form>
+                <form action="/profesional/<%= profesional.id %>/edit" method="POST" style="display:inline;">
+                    <button type="submit">Editar</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>

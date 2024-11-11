@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pacientes</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Gestión de Pacientes</h1>
+    
+    <!-- Formulario para añadir un nuevo paciente -->
+    <form action="/paciente" method="POST">
+        <label for="nombre_completo">Nombre Completo:</label>
+        <input type="text" name="nombre_completo" required>
+        
+        <label for="cedula">Cédula:</label>
+        <input type="text" name="cedula" required>
+        
+        <label for="telefono">Teléfono:</label>
+        <input type="text" name="telefono">
+        
+        <label for="direccion">Dirección:</label>
+        <input type="text" name="direccion">
+        
+        <label for="ciudad">Ciudad:</label>
+        <input type="text" name="ciudad">
+        
+        <button type="submit">Agregar Paciente</button>
+    </form>
+
+    <!-- Listado de pacientes -->
+    <h2>Lista de Pacientes</h2>
+    <ul>
+        <% pacientes.forEach(paciente => { %>
+            <li>
+                <strong><%= paciente.nombre_completo %></strong> - <%= paciente.cedula %>
+                <form action="/paciente/<%= paciente.id %>/delete" method="POST" style="display:inline;">
+                    <button type="submit">Eliminar</button>
+                </form>
+                <form action="/paciente/<%= paciente.id %>/edit" method="POST" style="display:inline;">
+                    <button type="submit">Editar</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>
